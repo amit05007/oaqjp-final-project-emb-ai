@@ -11,7 +11,7 @@ def detect_emotions():
     if response['dominant_emotion'] is None:
         return "Invalid input! Try again."
     else:
-        return (        
+        return (
         f"For the given statement, the system response is "
         f"'anger': {response['anger']}, "
         f"'disgust': {response['disgust']}, "
@@ -20,12 +20,10 @@ def detect_emotions():
         f"'sadness': {response['sadness']}. "
         f"The dominant emotion is {response['dominant_emotion']}."
         )
-
  
 @app.route("/")
 def render_index_page():
     return render_template('index.html')
-
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
