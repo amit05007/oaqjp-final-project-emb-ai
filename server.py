@@ -1,3 +1,6 @@
+"""
+This module detects the emotions for a given statement.
+"""
 from flask import Flask, render_template, request
 from EmotionDetection.emotion_detection import emotion_detector
 
@@ -5,9 +8,9 @@ app = Flask("Emotion Detector")
 
 @app.route("/emotionDetector")
 def detect_emotions():
+    """ return emotions for a given input"""
     text_to_analyze = request.args.get('textToAnalyze')
     response = emotion_detector(text_to_analyze)
-
     if response['dominant_emotion'] is None:
         return "Invalid input! Try again."
     else:
@@ -20,9 +23,9 @@ def detect_emotions():
         f"'sadness': {response['sadness']}. "
         f"The dominant emotion is {response['dominant_emotion']}."
         )
- 
 @app.route("/")
 def render_index_page():
+    """ render page"""
     return render_template('index.html')
 
 if __name__ == "__main__":
